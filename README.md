@@ -2,16 +2,16 @@
 
 ## usersテーブル
 
-| Column             | Type       | Option       |
-| ------------------ | ---------- | ------------ |
-| nickname           | string     | null :false  |
-| email              | string     | unique: true |
-| encrypted_password | string     | null :false  |
-| family_name        | string     | null :false  |
-| first_name         | string     | null :false  |
-| family_name_kana   | string     | null :false  |
-| first_name_kana    | string     | null :false  |
-| birthday           | date       | null :false  |
+| Column             | Type       | Option                    |
+| ------------------ | ---------- | ------------------------- |
+| nickname           | string     | null :false               |
+| email              | string     | null :false, unique: true |
+| encrypted_password | string     | null :false               |
+| family_name        | string     | null :false               |
+| first_name         | string     | null :false               |
+| family_name_kana   | string     | null :false               |
+| first_name_kana    | string     | null :false               |
+| birthday           | date       | null :false               |
 
 ### Association
 
@@ -51,7 +51,7 @@
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
 
 ## purchasesテーブル
 
@@ -64,5 +64,5 @@
 
 - belongs_to :user
 - belongs_to :product
-- belongs_to :buyer
+- has_one :buyer
 
