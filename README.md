@@ -2,21 +2,21 @@
 
 ## usersテーブル
 
-| Column           | Type       | Option       |
-| ---------------- | ---------- | ------------ |
-| nickname         | string     | null :false  |
-| email            | string     | unique: true |
-| password         | string     | null :false  |
-| family_name      | string     | null :false  |
-| first_name       | string     | null :false  |
-| family_name_kana | string     | null :false  |
-| first_name_kana  | string     | null :false  |
-| birthday         | date       | null :false  |
+| Column             | Type       | Option       |
+| ------------------ | ---------- | ------------ |
+| nickname           | string     | null :false  |
+| email              | string     | unique: true |
+| encrypted_password | string     | null :false  |
+| family_name        | string     | null :false  |
+| first_name         | string     | null :false  |
+| family_name_kana   | string     | null :false  |
+| first_name_kana    | string     | null :false  |
+| birthday           | date       | null :false  |
 
 ### Association
 
 - has_many :products
-- has_one :buyer
+- has_many :purchases
 
 ## productsテーブル
 
@@ -24,11 +24,12 @@
 | ---------------- | ---------- | ----------------- |
 | name             | string     | null :false       |
 | description      | text       | null :false       |
-| category         | text       | null :false       |
-| status           | text       | null :false       |
-| cost             | text       | null :false       |
-| ship_from        | text       | null :false       |
-| ship_date        | integer    | null :false       |
+| price            | integer    | null :false       |
+| category_id      | integer    | null :false       |
+| status_id        | integer    | null :false       |
+| cost_id          | integer    | null :false       |
+| state_id         | integer    | null :false       |
+| date_id          | integer    | null :false       |
 | user             | references | foreign_key: true |
 
 ### Association
@@ -41,7 +42,7 @@
 | Column           | Type       | Option            |
 | ---------------- | ---------- | ----------------- |
 | postal_code      | string     | null :false       |
-| state            | string     | null :false       |
+| state_id         | integer    | null :false       |
 | city             | string     | null :false       |
 | address          | string     | null :false       |
 | building         | string     |                   |
@@ -50,7 +51,6 @@
 
 ### Association
 
-- belongs_to :user
 - has_one :purchase
 
 ## purchasesテーブル
@@ -58,10 +58,11 @@
 | Column           | Type       | Option            |
 | ---------------- | ---------- | ----------------- |
 | product          | references | foreign_key: true |
-| buyer            | references | foreign_key: true |
+| user             | references | foreign_key: true |
 
 ### Association
 
+- belongs_to :user
 - belongs_to :product
 - belongs_to :buyer
 
