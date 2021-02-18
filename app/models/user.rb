@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates_format_of :password, presence: true, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
-  
+
   with_options presence: true do
     validates :nickname
     validates :birthday
