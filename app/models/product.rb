@@ -17,11 +17,11 @@ class Product < ApplicationRecord
         errors.add(:image, 'にはjpegまたはpngファイルを添付してください')
       end
     else
-      errors.add(:image, "can't be blank ")
+      errors.add(:image, "can't be blank")
     end
   end
 
-FEE_REGEX = /\A[\d]+\z/.freeze
+FEE_REGEX = /\A[0-9]\d+\z/.freeze
 
 
 
@@ -31,6 +31,8 @@ with_options presence: true do
   validates :description
   validates :price
 end
+
+validate :user_id
 
 validates :price, format: {with: FEE_REGEX, message: "Half-width number"}
 validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000, message: "Out of setting range" }
