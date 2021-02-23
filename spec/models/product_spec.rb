@@ -27,7 +27,7 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include('Image にはjpegまたはpngファイルを添付してください')
       end
 
-      it 'nameが空では出品できない'do
+      it 'nameが空では出品できない' do
         @product.name = ''
         @product.valid?
         expect(@product.errors.full_messages).to include("Name can't be blank")
@@ -42,31 +42,31 @@ RSpec.describe Product, type: :model do
       it 'category_idの選択が1の場合出品できない' do
         @product.category_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category Select")
+        expect(@product.errors.full_messages).to include('Category Select')
       end
 
       it 'status_idの選択が1の場合出品できない' do
         @product.status_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Status Select")
+        expect(@product.errors.full_messages).to include('Status Select')
       end
 
       it 'cost_idの選択が1の場合出品できない' do
         @product.cost_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Cost Select")
+        expect(@product.errors.full_messages).to include('Cost Select')
       end
 
       it 'state_idの選択が1の場合出品できない' do
         @product.state_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("State Select")
+        expect(@product.errors.full_messages).to include('State Select')
       end
 
       it 'day_idの選択が1の場合出品できない' do
         @product.day_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Day Select")
+        expect(@product.errors.full_messages).to include('Day Select')
       end
 
       it 'priceが空では出品できない' do
@@ -78,19 +78,19 @@ RSpec.describe Product, type: :model do
       it 'priceが299以下では出品できない' do
         @product.price = 299
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price Out of setting range")
+        expect(@product.errors.full_messages).to include('Price Out of setting range')
       end
 
       it 'priceが10000000以上では出品できない' do
-        @product.price = 10000000
+        @product.price = 10_000_000
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price Out of setting range")
+        expect(@product.errors.full_messages).to include('Price Out of setting range')
       end
 
       it 'priceが半角数字でなければ出品できない' do
         @product.price = 'test'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price Half-width number")
+        expect(@product.errors.full_messages).to include('Price Half-width number')
       end
 
       it 'userが紐付いていないと出品できない' do
