@@ -9,10 +9,9 @@ AllCops:
    - "node_modules/**/*"
    - "Gemfile"
 
-
 # 1行あたりの文字数をチェックする
 Layout/LineLength:
- Max: 130
+ Max: 150
 # 下記ファイルはチェックの対象から外す
  Exclude:
    - "Rakefile"
@@ -79,3 +78,5 @@ Style/FrozenStringLiteralComment:
 # メソッドパラメータ名の最小文字数を設定
 Naming/MethodParameterName:
  MinNameLength: 1
+
+ 
