@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
       redirect_to root_path
     else
       render action: :new
-      @product = Product.new(product_params)
     end
   end
 

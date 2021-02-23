@@ -27,8 +27,6 @@ class Product < ApplicationRecord
     validates :price
   end
 
-  validate :user_id
-
   validates :price, format: { with: FEE_REGEX, message: 'Half-width number' }
   validates :price,
             numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000, message: 'Out of setting range' }
