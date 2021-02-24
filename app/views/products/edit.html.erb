@@ -10,7 +10,7 @@
     
     <%= render 'shared/error_messages', model: f.object %>
    
-    
+
     <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -99,20 +99,20 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"半角数字で入力 例）300" %>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
           <span>
-            <span id='add-tax-price'>0</span>円
+            <span id='add-tax-price'></span>円
           </span>
         </div>
         <div class="price-content">
           <span>販売利益</span>
           <span>
-            <span id='profit'>0</span>円
+            <span id='profit'></span>円
+          </span>
         </div>
-        </span>
       </div>
     </div>
     <%# /販売価格 %>
@@ -138,8 +138,8 @@
     <%# /注意書き %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', product_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
