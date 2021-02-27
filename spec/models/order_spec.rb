@@ -2,24 +2,19 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   before do
-    @order = FactoryBot.build(:order)
+    user = FactoryBot.create(:user)
+    product = FactoryBot.create(:product)
+    @order = FactoryBot.build(:order, user_id: user[:id], product_id: product[:id])
+    sleep 0.1
   end
 
   describe '商品購入機能' do
     context '商品購入できる時' do
       it 'postal_code、state_id、city、address、phonw_num、product_id、user_id、tokenが存在していれば購入できる' do
-        user = FactoryBot.create(:user)
-        product = FactoryBot.create(:product)
-        @order = FactoryBot.build(:order, user_id: user[:id], product_id: product[:id])
-        sleep 0.1
         expect(@order).to be_valid
       end
 
       it 'buildingが空でも購入できる' do
-        user = FactoryBot.create(:user)
-        product = FactoryBot.create(:product)
-        @order = FactoryBot.build(:order, user_id: user[:id], product_id: product[:id])
-        sleep 0.1
         @order.building = ''
         expect(@order).to be_valid
       end
@@ -72,6 +67,18 @@ RSpec.describe Order, type: :model do
         @order.token = ''
         @order.valid?
         expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'user_idが空の場合購入できない' do
+        @order.user_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'product_idが空の場合購入できない' do
+        @order.product_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Product can't be blank")
       end
     end
   end
