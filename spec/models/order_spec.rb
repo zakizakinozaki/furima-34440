@@ -28,7 +28,7 @@ RSpec.describe Order, type: :model do
       end
 
       it 'postal_codeにハイフンが含まれていなければ購入できない' do
-        @order.postal_code = 1_234_567
+        @order.postal_code = '1234567'
         @order.valid?
         expect(@order.errors.full_messages).to include('Postal code Input correctly')
       end

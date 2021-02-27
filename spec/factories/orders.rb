@@ -4,7 +4,7 @@ FactoryBot.define do
     state_id         { 2 }
     city             { 'test' }
     address          { 'test' }
-    phone_num        { 111_111_111 }
+    phone_num        { '111_1111_1111' }
     building         { 'test' }
     token            { 'tok_abcdefghijk00000000000000000' }
   end

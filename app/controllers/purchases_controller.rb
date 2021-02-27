@@ -1,8 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product
-  before_action :move_to_root
-  before_action :move_to_redirect
+  before_action :move_to_root, :move_to_redirect
 
   def index
     @order = Order.new
