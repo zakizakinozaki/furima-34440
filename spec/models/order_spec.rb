@@ -69,6 +69,12 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include('Phone num Input only number')
       end
 
+      it 'phone_numは12桁以上だと登録できない' do
+        @order.phone_num = '123456789123'
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Phone num Input only number')
+      end
+
       it 'tokenが空では登録できない' do
         @order.token = ''
         @order.valid?

@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product
-  before_action :move_to_root, :move_to_redirect
+  before_action :move_to_root
 
   def index
     @order = Order.new
@@ -39,10 +39,6 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_root
-    redirect_to root_path if current_user.id == @product.user_id
-  end
-
-  def move_to_redirect
-    redirect_to root_path if @product.purchase.present?
+    redirect_to root_path if current_user.id == @product.user_id || @product.purchase.present? 
   end
 end

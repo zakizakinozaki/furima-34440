@@ -7,7 +7,7 @@ class Order
     validates :state_id, numericality: { other_than: 1, message: 'Select' }
     validates :city
     validates :address
-    validates :phone_num, format: { with: /[0-9]{1,11}\d/, message: 'Input only number' }
+    validates :phone_num, format: { with: /\A[0-9]{,11}\z/, message: 'Input only number' }
     validates :user_id
     validates :product_id
     validates :token
